@@ -1,18 +1,19 @@
-# 🏛️ Exeris Discussions
+# 🏛️ Exeris Kernel Discussions
 
 Welcome to the central nervous system of the **Exeris Kernel** community. 
 
-This repository exists solely to host technical debates, RFCs (Request for Comments), and architectural deep-dives. If you are coming here from [blog.arkstack.dev](https://blog.arkstack.dev), you are in the right place to leave your feedback.
+This repository exists solely to host hardcore technical debates, SPI architectural deep-dives, and RFCs (Request for Comments). If you care about nanosecond latency, off-heap memory determinism, and bypassing the Garbage Collector, you are in the right place.
 
-### 📜 Community Rules
-1. **Engineering First:** We debate memory layouts, syscall overhead, and concurrency models. Keep it technical and evidence-based.
-2. **No Waste:** Respect everyone's time. Clear, concise arguments > long manifestos.
-3. **Be Constructive:** We are transitioning from **Closed R&D to Public Beta**. Help us find the "Invisible Walls" in our architecture.
+## 📜 The "No Waste" Rules
 
-### 🚀 How to participate?
-- **Blog Comments:** React and comment directly under articles on our blog.
-- **New Ideas:** Start a new thread in the **Discussions** tab if you have a proposal for the SPI or Core.
-- **Showcase:** Show us how you use Exeris (or why you want to).
+* **Engineering First:** We debate memory layouts, syscall overhead (`io_uring`), and Loom concurrency models. Keep it technical, brutal, and evidence-based. 
+* **Bring Data (JFR):** Opinions are good, but `.jfr` recordings are better. If you propose a performance change, back it up with Flight Recorder metrics.
+* **Respect the SPI (The Wall):** Understand the difference between the Core (Orchestrator) and the execution tiers (Community vs. Enterprise). 
+* **Zero Bloat:** Respect everyone's time. Clear, concise arguments > long manifestos.
 
----
-*Exeris Kernel – Deleting legacy OOP bloat for zero-copy performance.*
+## 🚀 How to Participate?
+
+Head over to the **[Discussions](#)** tab and pick a category:
+* 🔥 **Performance Showcase:** Flex your JFR flamegraphs and RAM savings here.
+* 💡 **SPI Architecture & RFCs:** Propose changes to the `KernelProviders`, Event Bus, or custom off-heap drivers.
+* 🐛 **Entropy Containment:** Found an allocation leak or a bug? Report it here so we can patch the Shield Wall.
