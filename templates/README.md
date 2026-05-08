@@ -77,7 +77,7 @@ A single Research effort or RFC may produce multiple ADRs.
   - Research: `<short-slug>.md` on a `research/<slug>` branch.
 - **Numbering.** ADR numbers are reserved in [`../adr-index.md`](../adr-index.md) before content is written. RFC IDs are the date the RFC opens — no central registry. Research has no central registry — it's branch-scoped.
 - **Status discipline.** ADRs in PROPOSED and RFCs in DRAFT should accept, reject, or withdraw within a couple of weeks. Research with `Status: active` for more than one milestone should conclude, park, or abandon.
-- **Language.** All ADRs are in English — body content, section headings, frontmatter table labels, everything. The canonical frontmatter labels are `Attribute` / `Value`. Existing ADRs across the ecosystem that still carry the legacy Polish labels (`Atrybut` / `Wartość`) are translated as part of normal maintenance — no new Polish labels are introduced. The same English-only rule applies to RFCs that drive ADRs, the index, and this README. Research lab-notebook content may be informal. Repo-local working notes (refactor archaeology, internal R&D) may be in any language but never enter the ADR namespace.
+- **Language.** All ADRs are in English — body content, section headings, frontmatter table labels, everything. The canonical frontmatter labels are `Attribute` / `Value`. The same English-only rule applies to RFCs that drive ADRs, the index, and this README. Research lab-notebook content may be informal. Repo-local working notes (refactor archaeology, internal R&D) may be in any language but never enter the ADR namespace.
 
 ## Cross-references
 
