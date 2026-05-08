@@ -97,7 +97,6 @@ The drift-detection job runs in CI for `exeris-docs` and aggregates results acro
 
 ### ⚠️ Trade-offs
 
-- **[-] Visibility migration touches every row.** ADRs currently marked `public-staged` (if any remain after the 2026-05-07 pass) need to be re-classified. The migration is mechanical but every entry must be touched.
 - **[-] Cross-repo CI complexity.** Drift-detection requires checkouts of multiple repos; a heavier build configuration than a typical single-repo CI step. Acceptable for a release-gate job, not a per-PR step.
 - **[-] Authors must classify intent at write time.** When adding a new ADR or doc, the author must answer: "Is this for public release? If yes, in which public repo?" — and act accordingly. Repo-level CLAUDE.md updates should call this out.
 
@@ -117,8 +116,11 @@ The drift-detection job runs in CI for `exeris-docs` and aggregates results acro
 
 ## Engineering Protocol
 
-Once this decision is ACCEPTED:
+Landed alongside this ADR's acceptance:
 
-1. Update `adr-index.md` Rules §3 (Visibility) to remove the `public-staged` value and document the two-value canonical taxonomy.
-2. Implement the cross-repo drift-detection CI job in `exeris-docs` (or as a release-gate workflow). Until it lands, document a periodic-audit cadence.
-3. Each repo's CLAUDE.md (or CONTRIBUTING.md) should reference this ADR when discussing where new documentation belongs.
+- `adr-index.md` Rules §3 (Visibility) updated to the two-value canonical taxonomy (`public` / `enterprise-private`); the `public-staged` value retired.
+
+Open follow-ups (tracked separately):
+
+- Implement the cross-repo drift-detection CI job in `exeris-docs` (or as a release-gate workflow). Until it lands, periodic manual audits substitute.
+- Each repo's CLAUDE.md (or CONTRIBUTING.md) should reference this ADR when discussing where new documentation belongs.
