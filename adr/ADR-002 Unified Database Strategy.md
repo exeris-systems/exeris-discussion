@@ -2,7 +2,7 @@
 
 > **Scope:** platform-recommended stack for new applications, not a kernel mandate. The Exeris kernel itself remains database-agnostic at the runtime layer (`PersistenceProvider` SPI); apps can override with their own persistence provider.
 
-| Atrybut        | Wartość                                                                                                                                                             |
+| Attribute      | Value                                                                                                                                                             |
 |:---------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Status**     | **ACCEPTED**                                                                                                                                                        |
 | **Deciders**   | Arkadiusz Przychocki                                                                                                                                                |

@@ -1,6 +1,6 @@
 # ADR-020: Open-Core Documentation Boundary & Cross-Repo Mirror Policy
 
-| Atrybut         | Wartość                                                                                                       |
+| Attribute       | Value                                                                                                       |
 |:----------------|:--------------------------------------------------------------------------------------------------------------|
 | **Status**      | **ACCEPTED** (formal record authored 2026-05-08 — see retrospective note below)                               |
 | **Deciders**    | Arkadiusz Przychocki                                                                                          |

@@ -15,7 +15,7 @@ TEMPLATE USAGE NOTES — DELETE THIS BLOCK BEFORE COMMITTING.
 6. Cross-references: link to other ADRs by number; subsystem docs by repo-relative path.
 -->
 
-| Atrybut         | Wartość                                                                                          |
+| Attribute       | Value                                                                                          |
 |:----------------|:-------------------------------------------------------------------------------------------------|
 | **Status**      | **PROPOSED** \| **ACCEPTED** \| **SUPERSEDED by ADR-MMM** \| **WITHDRAWN**                       |
 | **Deciders**    | <Author(s) — typically a single name; list everyone whose sign-off is load-bearing>              |

@@ -1,6 +1,6 @@
 # ADR-004: JDK 26 EA + Preview Features Mandate
 
-| Atrybut         | Wartość                                                                                                  |
+| Attribute       | Value                                                                                                  |
 |:----------------|:---------------------------------------------------------------------------------------------------------|
 | **Status**      | **ACCEPTED** (formal record authored 2026-05-08 — see retrospective note below)                          |
 | **Deciders**    | Arkadiusz Przychocki                                                                                     |

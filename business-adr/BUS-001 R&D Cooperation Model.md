@@ -1,6 +1,6 @@
 # BUS-001: R&D Cooperation Model (IP Sovereignty)
 
-| Atrybut        | Wartość                                                                                                                                                           |
+| Attribute      | Value                                                                                                                                                           |
 |:---------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Status**     | **ACCEPTED**                                                                                                                                                      |
 | **Deciders**   | Arkadiusz Przychocki                                                                                                                                              |

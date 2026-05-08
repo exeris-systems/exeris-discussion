@@ -1,6 +1,6 @@
 # ADR-001: Cloud Native & Agnostic Infrastructure Strategy
 
-| Atrybut        | Wartość                                                                          |
+| Attribute      | Value                                                                          |
 |:---------------|:---------------------------------------------------------------------------------|
 | **Status**     | **ACCEPTED**                                                                     |
 | **Deciders**   | Arkadiusz Przychocki                                                             |

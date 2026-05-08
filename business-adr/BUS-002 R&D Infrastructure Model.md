@@ -1,6 +1,6 @@
 # BUS-002: R&D Infrastructure Model (Virtual Lab)
 
-| Atrybut        | Wartość                                                                                                                                                            |
+| Attribute      | Value                                                                                                                                                            |
 |:---------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Status**     | **ACCEPTED**                                                                                                                                                       |
 | **Deciders**   | Arkadiusz Przychocki                                                                                                                                               |
