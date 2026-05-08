@@ -77,7 +77,7 @@ A single Research effort or RFC may produce multiple ADRs.
   - Research: `<short-slug>.md` on a `research/<slug>` branch.
 - **Numbering.** ADR numbers are reserved in [`../adr-index.md`](../adr-index.md) before content is written. RFC IDs are the date the RFC opens — no central registry. Research has no central registry — it's branch-scoped.
 - **Status discipline.** ADRs in PROPOSED and RFCs in DRAFT should accept, reject, or withdraw within a couple of weeks. Research with `Status: active` for more than one milestone should conclude, park, or abandon.
-- **Language.** Registry-tracked documents (ADRs, RFCs that drive ADRs, the index, this README) are in English. Research lab-notebook content may be informal. Repo-local working notes (refactor archaeology, internal R&D) may be in any language but never enter the ADR namespace.
+- **Language.** Body content of registry-tracked documents (ADRs, RFCs that drive ADRs, the index, this README) is in English. Frontmatter table labels (`Atrybut` / `Wartość`) are preserved as a historical convention from the early ADRs; new ADRs may use them or English equivalents (`Attribute` / `Value`) — both forms are recognised. Research lab-notebook content may be informal. Repo-local working notes (refactor archaeology, internal R&D) may be in any language but never enter the ADR namespace.
 
 ## Cross-references
 

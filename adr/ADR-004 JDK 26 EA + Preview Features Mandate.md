@@ -2,13 +2,15 @@
 
 | Atrybut         | Wartość                                                                                                  |
 |:----------------|:---------------------------------------------------------------------------------------------------------|
-| **Status**      | **PROPOSED** (drafted 2026-05-08; decision date 2025-12-26)                                              |
+| **Status**      | **ACCEPTED** (formal record authored 2026-05-08 — see retrospective note below)                          |
 | **Deciders**    | Arkadiusz Przychocki                                                                                     |
 | **Date**        | 2025-12-26                                                                                               |
 | **Scope**       | platform (binds every Exeris repository — kernel, sdk, spring-runtime, tooling, enterprise)              |
 | **Owning Repo** | `exeris-docs`                                                                                            |
 | **Driven By**   | No-Waste Compute thesis; JDK 26 EA availability (work started 2025-09-16 when EA dropped)                |
 | **Compliance**  | [Strategic Pillar: No-Waste Compute](../../exeris-kernel/docs/whitepaper.md)                             |
+
+> **Retrospective record.** The decision was made on 2025-12-26 and operationalized across all repositories well before this ADR was written. The formal record was authored on 2026-05-08 as part of the ADR registry bootstrap. The Date field reflects the actual decision date, not the authoring date.
 
 ## Context and Problem Statement
 
@@ -51,7 +53,7 @@ A platform pinned at JDK 21 LTS (or even JDK 25 LTS) cannot honour these contrac
 - **[-] Preview-feature volatility.** Preview features may rename, change signatures, or be removed across EA builds. The repos accept the maintenance cost of tracking EA semantics in exchange for early access to the runtime model.
 - **[-] Tooling lag.** Some IDEs, static analysers, and bytecode tools lag behind preview features. Workarounds may require manual configuration.
 
-### 📋 Out of scope
+### 📋 What is NOT in scope
 
 - Backwards-compatibility shims for JDK 21 / 25. None are provided. Code that targets older JDKs is rejected.
 - Multi-release JARs. The platform ships JDK 26 bytecode only; no `META-INF/versions/21/` paths.

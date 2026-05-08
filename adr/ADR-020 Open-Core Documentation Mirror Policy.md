@@ -2,13 +2,15 @@
 
 | Atrybut         | Wartość                                                                                                       |
 |:----------------|:--------------------------------------------------------------------------------------------------------------|
-| **Status**      | **PROPOSED** (drafted 2026-05-08; decision date 2026-05-05)                                                   |
+| **Status**      | **ACCEPTED** (formal record authored 2026-05-08 — see retrospective note below)                               |
 | **Deciders**    | Arkadiusz Przychocki                                                                                          |
 | **Date**        | 2026-05-05                                                                                                    |
 | **Scope**       | platform (binds every Exeris repository — public open-core and private enterprise alike)                      |
 | **Owning Repo** | `exeris-docs`                                                                                                 |
 | **Driven By**   | ADR-008 (Open-Core Strategy); cleanup pass on 2026-05-07 that consolidated platform-scope ADRs                |
 | **Compliance**  | [`adr-index.md`](../adr-index.md) §Rules §Visibility                                                          |
+
+> **Retrospective record.** The decision was made on 2026-05-05 and the cleanup pass that operationalized it landed on 2026-05-07. The formal record was authored on 2026-05-08 as part of the ADR registry bootstrap. The Date field reflects the actual decision date, not the authoring date.
 
 ## Context and Problem Statement
 
@@ -99,7 +101,7 @@ The drift-detection job runs in CI for `exeris-docs` and aggregates results acro
 - **[-] Cross-repo CI complexity.** Drift-detection requires checkouts of multiple repos; a heavier build configuration than a typical single-repo CI step. Acceptable for a release-gate job, not a per-PR step.
 - **[-] Authors must classify intent at write time.** When adding a new ADR or doc, the author must answer: "Is this for public release? If yes, in which public repo?" — and act accordingly. Repo-level CLAUDE.md updates should call this out.
 
-### 📋 What is NOT in this ADR
+### 📋 What is NOT in scope
 
 - This ADR does not redefine what `open-core` means strategically. ADR-008 owns that.
 - This ADR does not retroactively reclassify existing ADRs. Index updates happen as separate PRs guided by this policy.
@@ -108,9 +110,10 @@ The drift-detection job runs in CI for `exeris-docs` and aggregates results acro
 ## Cross-references
 
 - ADR-008 (Open-Core Strategy) — the strategic framing this policy serves.
+- ADR-007 (Next-Gen Runtime Architecture) — example of a kernel-owned ADR consumed by enterprise via the boundary this policy formalises.
 - ADR-018 (Observability Tooling Repo Split) — established the `.link.md` stub pattern that this ADR generalises.
 - ADR-001 (Cloud Native) — first ADR migrated under this policy (PR on 2026-05-07 moved the authoritative copy to `exeris-docs/adr/` with link stubs in consuming repos).
-- `adr-index.md` Rules §Visibility — to be updated to remove `public-staged` and reflect this ADR's two-value taxonomy.
+- `adr-index.md` Rules §Visibility — updated alongside this ADR's acceptance to remove `public-staged` and reflect the two-value taxonomy.
 
 ## Engineering Protocol
 
