@@ -12,8 +12,8 @@ Business-side decisions (legal / IP / financial / procurement / partner agreemen
 
 | #       | Title                                          | Owning repo  | Side               | Visibility | Status     | Date       | Link                                                                                                          |
 |---------|------------------------------------------------|--------------|--------------------|------------|------------|------------|---------------------------------------------------------------------------------------------------------------|
-| BUS-001 | R&D Cooperation Model (IP Sovereignty)         | exeris-docs  | legal / IP         | internal   | accepted   | 2025-12-10 | [business-adr/BUS-001 R&D Cooperation Model.md](business-adr/BUS-001%20R%26D%20Cooperation%20Model.md)         |
-| BUS-002 | R&D Infrastructure Model (Virtual Lab)         | exeris-docs  | financial / capex  | internal   | accepted   | 2025-12-11 | [business-adr/BUS-002 R&D Infrastructure Model.md](business-adr/BUS-002%20R%26D%20Infrastructure%20Model.md)   |
+| BUS-001 | R&D Cooperation Model (IP Sovereignty)         | exeris-docs  | legal / IP         | internal   | accepted   | 2025-12-10 | [business-adr/BUS-001 …](business-adr/BUS-001-rd-cooperation-model.md)                                        |
+| BUS-002 | R&D Infrastructure Model (Virtual Lab)         | exeris-docs  | financial / capex  | internal   | accepted   | 2025-12-11 | [business-adr/BUS-002 …](business-adr/BUS-002-rd-infrastructure-model.md)                                     |
 
 ## Cross-references with the tech registry
 

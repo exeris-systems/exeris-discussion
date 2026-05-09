@@ -4,7 +4,7 @@
 TEMPLATE USAGE NOTES — DELETE THIS BLOCK BEFORE COMMITTING.
 
 1. Reserve the number FIRST in `exeris-docs/adr-index.md` (a separate PR), then write content here.
-2. Filename pattern: `ADR-NNN <Short Title>.md` — leading zeros to 3 digits, then a single space, then a human-readable title.
+2. Filename pattern: `ADR-NNN-<lowercase-kebab-title>.md` — 3-digit zero-padded, then `-`, then the title in lowercase kebab-case (replace `&` with `and`; drop other punctuation). See `templates/README.md` §Conventions for the full slug rule.
 3. Authoritative location depends on Scope (see ADR-020 §1):
    - platform → `exeris-docs/adr/`
    - per-repo → `<owning-repo>/docs/adr/`

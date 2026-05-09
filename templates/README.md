@@ -65,16 +65,18 @@ A single Research effort or RFC may produce multiple ADRs.
 
 ## Where the documents live
 
-- **ADR location** is governed by [ADR-020](../adr/ADR-020%20Open-Core%20Documentation%20Mirror%20Policy.md): platform → `exeris-docs/adr/`; per-repo → `<repo>/docs/adr/`; cross-repo → owning repo with `.link.md` stubs in consumers; enterprise-private → `<enterprise-repo>/docs/adr/`.
+- **ADR location** is governed by [ADR-020](../adr/ADR-020-open-core-documentation-mirror-policy.md): platform → `exeris-docs/adr/`; per-repo → `<repo>/docs/adr/`; cross-repo → owning repo with `.link.md` stubs in consumers; enterprise-private → `<enterprise-repo>/docs/adr/`.
 - **RFC location** may be this repo, the relevant code repo, or an external system (Confluence, Notion). The accepted RFC's URL is referenced in the resulting ADR's `Driven By` field.
 - **Research location** is the relevant code repo's `docs/research/` directory, on a `research/<slug>` branch — see the kernel's `docs/research/RESEARCH.md` framework doc for the established branch workflow. Research can happen in any repo where measurement-driven decisions arise.
 
 ## Conventions
 
-- **Filenames.**
-  - ADR: `ADR-NNN <Short Title>.md` (3-digit zero-padded).
-  - RFC: `RFC-YYYY-MM-DD <Short Title>.md` (date prefix).
+- **Filenames.** Lowercase kebab-case for the title slug; the `ADR-NNN` / `BUS-NNN` / `RFC-YYYY-MM-DD` prefix keeps its original casing.
+  - ADR: `ADR-NNN-<lowercase-kebab-title>.md` (3-digit zero-padded; e.g. `ADR-001-cloud-native-and-agnostic-infrastructure-strategy.md`).
+  - BUS: `BUS-NNN-<lowercase-kebab-title>.md` (same convention as ADR; e.g. `BUS-001-rd-cooperation-model.md`).
+  - RFC: `RFC-YYYY-MM-DD-<lowercase-kebab-title>.md` (date prefix; same kebab title rule).
   - Research: `<short-slug>.md` on a `research/<slug>` branch.
+  - **Title slug rules.** Replace `&` with `and`. Drop other punctuation (`+`, `:`, `(`, `)`, `,`, etc.). Collapse runs of whitespace/hyphens to a single `-`. The slug should be machine-grep-able and copy-paste-safe in URLs (no `%20`, no `%26`).
 - **Numbering.** ADR numbers are reserved in [`../adr-index.md`](../adr-index.md) before content is written. RFC IDs are the date the RFC opens — no central registry. Research has no central registry — it's branch-scoped.
 - **Status discipline.** ADRs in PROPOSED and RFCs in DRAFT should accept, reject, or withdraw within a couple of weeks. Research with `Status: active` for more than one milestone should conclude, park, or abandon.
 - **Language.** All ADRs are in English — body content, section headings, frontmatter table labels, everything. The canonical frontmatter labels are `Attribute` / `Value`. The same English-only rule applies to RFCs that drive ADRs, the index, and this README. Research lab-notebook content may be informal. Repo-local working notes (refactor archaeology, internal R&D) may be in any language but never enter the ADR namespace.
@@ -83,5 +85,5 @@ A single Research effort or RFC may produce multiple ADRs.
 
 - [`../adr-index.md`](../adr-index.md) — central tech ADR registry.
 - [`../business-adr-index.md`](../business-adr-index.md) — separate `BUS-NNN` namespace for business / legal / financial decisions.
-- [ADR-020](../adr/ADR-020%20Open-Core%20Documentation%20Mirror%20Policy.md) — where ADRs live across the open-core / enterprise repo split.
+- [ADR-020](../adr/ADR-020-open-core-documentation-mirror-policy.md) — where ADRs live across the open-core / enterprise repo split.
 - `exeris-kernel/docs/research/RESEARCH.md` — kernel research framework (when, how, branch lifecycle, current portfolio).
