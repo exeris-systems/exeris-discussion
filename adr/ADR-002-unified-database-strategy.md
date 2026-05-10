@@ -2,15 +2,14 @@
 
 > **Scope:** platform-recommended stack for new applications, not a kernel mandate. The Exeris kernel itself remains database-agnostic at the runtime layer (`PersistenceProvider` SPI); apps can override with their own persistence provider.
 
-| Attribute      | Value                                                                                                                                                             |
-|:---------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Status**     | **ACCEPTED**                                                                                                                                                        |
-| **Deciders**   | Arkadiusz Przychocki                                                                                                                                                |
-| **Date**       | 2025-10-15                                                                                                                                                          |
-| **Scope**      | platform (stack-level recommendation across all Exeris apps)                                                                                                        |
-| **Owning Repo**| `exeris-docs`                                                                                                                                                       |
-| **Driven By**  | [RFC-2025-10-15: Unified Database Strategy](https://exeris.atlassian.net/wiki/spaces/ENG/pages/14254124/2025-10-15+-+RFC+-+Unified+Database+Strategy+PostgreSQL+18) |
-| **Compliance** | [Strategic Pillar: No-Waste Compute](https://exeris.atlassian.net/wiki/spaces/HUB/pages/6094854/Strategic+Pillars+Architecture+Principles#Strategic-Pillars)        |
+| Attribute       | Value                                                                                                                                                               |
+|:----------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Status**      | **ACCEPTED**                                                                                                                                                        |
+| **Deciders**    | Arkadiusz Przychocki                                                                                                                                                |
+| **Date**        | 2025-10-15                                                                                                                                                          |
+| **Scope**       | platform (stack-level recommendation across all Exeris apps)                                                                                                        |
+| **Owning Repo** | `exeris-docs`                                                                                                                                                       |
+| **Compliance**  | [Strategic Pillar: No-Waste Compute](../../exeris-kernel/docs/whitepaper.md)                                                                                        |
 
 ## Context and Problem Statement
 The "Polyglot Persistence" pattern (e.g., using Neo4j for Graph, Mongo for Docs, SQL for core) introduces massive operational complexity ("Integration Tax"), high licensing costs, and distributed transaction consistency issues.

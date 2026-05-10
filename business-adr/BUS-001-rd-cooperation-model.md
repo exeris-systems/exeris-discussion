@@ -8,8 +8,7 @@
 | **Side**       | business (legal / IP / contracting)                                                                                                                               |
 | **Visibility** | internal (do not externalize without legal review)                                                                                                                |
 | **Owning Repo**| `exeris-docs`                                                                                                                                                     |
-| **Driven By**  | [RFC-2025-12-10: R&D Cooperation Model](https://exeris.atlassian.net/wiki/spaces/ENG/pages/13369393/2025-12-10+-+RFC+-+R+D+Cooperation+Model+IP+Sovereignty)      |
-| **Compliance** | [Strategic Pillar: Clean IP & Detachment](https://exeris.atlassian.net/wiki/spaces/HUB/pages/6094854/Strategic+Pillars+Architecture+Principles#Strategic-Pillars) |
+| **Compliance** | [Strategic Pillar: Clean IP & Detachment](../../exeris-kernel/docs/architecture.md)                                                                               |
 
 ## Context and Problem Statement
 Deep Tech R&D (e.g., Scheduler optimization, HTTP/3 tuning) requires scientific expertise (HPC/AI). However, typical grant-based "Consortia" with Universities lead to Shared IP Ownership. If a University owns even 10% of the Kernel, we legally **cannot** sell "Code Detachment" to clients, effectively killing our business model.

@@ -66,7 +66,7 @@ A single Research effort or RFC may produce multiple ADRs.
 ## Where the documents live
 
 - **ADR location** is governed by [ADR-020](../adr/ADR-020-open-core-documentation-mirror-policy.md): platform → `exeris-docs/adr/`; per-repo → `<repo>/docs/adr/`; cross-repo → owning repo with `.link.md` stubs in consumers; enterprise-private → `<enterprise-repo>/docs/adr/`.
-- **RFC location** may be this repo, the relevant code repo, or an external system (Confluence, Notion). The accepted RFC's URL is referenced in the resulting ADR's `Driven By` field.
+- **RFC location** may be this repo, the relevant code repo, an issue tracker, or an external discussion thread. The accepted RFC's URL is referenced in the resulting ADR's `Driven By` field.
 - **Research location** is the relevant code repo's `docs/research/` directory, on a `research/<slug>` branch — see the kernel's `docs/research/RESEARCH.md` framework doc for the established branch workflow. Research can happen in any repo where measurement-driven decisions arise.
 
 ## Conventions

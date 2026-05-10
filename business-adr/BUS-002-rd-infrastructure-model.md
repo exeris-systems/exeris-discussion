@@ -8,8 +8,7 @@
 | **Side**       | business (financial / procurement / capex)                                                                                                                         |
 | **Visibility** | internal                                                                                                                                                           |
 | **Owning Repo**| `exeris-docs`                                                                                                                                                      |
-| **Driven By**  | [RFC-2025-12-11: Infrastructure Model](https://exeris.atlassian.net/wiki/spaces/ENG/pages/13369408/2025-12-11+-+RFC+-+Infrastructure+Model+Virtual+Biotech)        |
-| **Compliance** | [Strategic Pillar: Risk-Managed Structure](https://exeris.atlassian.net/wiki/spaces/HUB/pages/6094854/Strategic+Pillars+Architecture+Principles#Strategic-Pillars) |
+| **Compliance** | Strategic Pillar: Risk-Managed Structure                                                                                                                           |
 
 ## Context and Problem Statement
 Validating "Hyper-Density" (1M RPS) requires enterprise-grade hardware (NVMe, 100GbE). Building an on-premise Data Center requires massive CAPEX (>€500k), creating unnecessary financial risk. Public Cloud (AWS EC2) suffers from the "Noisy Neighbor" effect, making scientific benchmarking unreliable.

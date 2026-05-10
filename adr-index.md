@@ -15,11 +15,6 @@
    - `platform` — stack-level recommendation. Owning repo: `exeris-docs`.
 5. **Routines and reviewers cite by number**, not by path.
 
-## Out of scope
-
-- `budgetHQ/`, `pbm/` — portfolio products with their own ADR namespace.
-- `Corelio/main/docs/adr/` — reference product under rebuild. Stack-level decisions are promoted into this registry; product-local decisions stay in Corelio.
-
 ## Index
 
 | #   | Title                                                                                     | Owning repo                  | Scope                | Visibility         | Status                                    | Link                                                                                                                                                                             |
@@ -46,7 +41,7 @@
 | 020 | Open-Core Documentation Boundary & Cross-Repo Mirror Policy                               | exeris-docs                  | platform             | public             | accepted (2026-05-05)                     | [adr/ADR-020 …](adr/ADR-020-open-core-documentation-mirror-policy.md)                                                                                                            |
 | 021 | Gateway-Class Workloads Out of Compatibility Scope                                        | exeris-spring-runtime        | spring               | public             | accepted (2026-05-09)                     | [exeris-spring-runtime/docs/adr/ADR-021 …](../exeris-spring-runtime/docs/adr/ADR-021-gateway-class-workloads-out-of-compatibility-scope.md)                                      |
 
-> **Numbering note:** ADR-004 (2025-12-26) post-dates ADR-007's original acceptance (2025-12-11) by 15 days — conceptual ordering ("JDK target → runtime → telemetry → boundaries") is preserved over strict chronology. The 004–006 and 011 slots were reserved historically for early platform/cross-cutting decisions and are now filled. Local Polish refactor working docs that previously occupied numbers 010, 011, 012 inside `exeris-kernel-enterprise/docs/adr/` have been relocated to `exeris-kernel-enterprise/docs/refactor-notes/` (2026-05-07) and are no longer treated as ADRs.
+> **Numbering note:** ADR-004 (2025-12-26) post-dates ADR-007's original acceptance (2025-12-11) by 15 days — conceptual ordering ("JDK target → runtime → telemetry → boundaries") is preserved over strict chronology. The 004–006 and 011 slots were reserved historically for early platform/cross-cutting decisions and are now filled.
 
 ## Cross-repo stubs
 
