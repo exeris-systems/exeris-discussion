@@ -2,7 +2,7 @@
 
 | Attribute       | Value                                                                                                         |
 |:----------------|:--------------------------------------------------------------------------------------------------------------|
-| **Status**      | **PROPOSED** (drafted 2026-05-08; decision date 2026-02-22)                                                   |
+| **Status**      | **ACCEPTED** (drafted 2026-05-08; decision date 2026-02-22)                                                   |
 | **Deciders**    | Arkadiusz Przychocki                                                                                          |
 | **Date**        | 2026-02-22                                                                                                    |
 | **Scope**       | cross-repo (binds `exeris-kernel`, `exeris-kernel-enterprise`, `exeris-sdk`, `exeris-spring-runtime`)         |
