@@ -292,15 +292,17 @@ A Platform SKU is a named, signed, **commercial-licensed composition** of §3.2 
 
 The manifests below show the full cap list per SKU. Where a cap is `community`-licensed it inherits its open license; the SKU composition itself is `commercial` regardless. `enterprise-private` caps inside an SKU require the corresponding Enterprise subscription tier on top of the SKU.
 
-| Platform SKU | Family | Cap composition (full manifest, sorted by layer) |
-|---|---|---|
-| **API Gateway** | Gateway | `gateway-core`, `route-registry`, `upstream-pool`, `policy-chain`, `backend-health`, `admin-control-plane`, `rate-limiting`, `jwt-validation`, `tls-termination`, `request-routing`, `circuit-breaker`, `cors-policy`, `observability-bridge` |
-| **Edge Proxy** | Gateway | `gateway-core`, `route-registry`, `request-routing`, `tls-termination`, `circuit-breaker`, `backend-health`, `observability-bridge`, edge-failover cap (SKU-specific) |
-| **Bot Blocker** | Gateway | `gateway-core`, `tls-termination`, `policy-chain`, `bot-fingerprinting` (enterprise-private), `waf-rules`, `rate-limiting`, `observability-bridge` |
-| **IDP** | Service Boundary | `service-boundary-core`, `multi-tenancy`, `audit-trail`, `rbac-policy`, `attachment-storage`, `rest-emission`, `openapi-emission`, `workflow-engine`, `document-ingestion`, `ocr-pipeline`, `document-classifier`, `field-extraction`, `form-recognition`, `ai-llm-abstraction`, `ai-prompt-templating`, `observability-bridge` |
-| **PIM** | Service Boundary | `service-boundary-core`, `multi-tenancy`, `audit-trail`, `rbac-policy`, `i18n`, `attachment-storage`, `asset-management`, `search-index`, `entity-versioning`, `content-versioning`, `product-catalog`, `import-export`, `rest-emission`, `graphql-emission`, `openapi-emission`, `observability-bridge` |
-| **OMS** | Service Boundary | `service-boundary-core`, `multi-tenancy`, `audit-trail`, `rbac-policy`, `workflow-engine`, `notification-dispatch`, `circuit-breaker`, `product-catalog`, `pricing-engine`, `inventory-tracking`, `order-lifecycle`, `payment-gateway`, `contact-graph`, `rest-emission`, `openapi-emission`, `observability-bridge`. L4 Flow saga engine (ADR-013) consumed via kernel SPI. |
-| **Headless CMS** | Service Boundary | `service-boundary-core`, `multi-tenancy`, `audit-trail`, `rbac-policy`, `i18n`, `attachment-storage`, `asset-management`, `search-index`, `content-types`, `content-versioning`, `rest-emission`, `graphql-emission`, `openapi-emission`, `observability-bridge` |
+**Source-visibility policy (per ADR-023 §"SKU Repository Source-Visibility Policy").** Platform SKU repositories default to source-available public repositories under the Exeris Commercial License — the same source-available shape that governs `commercial`-licensed caps. Source-availability operationalises the Glass Box thesis at every audit layer, strengthens the Code Detachment Fee (§5.4 whitepaper) by including the SKU source in detachment scope, and aligns with potential CNCF / EU public-sector positioning. The single principled exception is the **Bot Blocker SKU**, which is closed-source on anti-abuse-security grounds — published detection logic helps adversaries circumvent the protection.
+
+| Platform SKU | Family | Source visibility | Cap composition (full manifest, sorted by layer) |
+|---|---|---|---|
+| **API Gateway** | Gateway | Source-available (public repo) | `gateway-core`, `route-registry`, `upstream-pool`, `policy-chain`, `backend-health`, `admin-control-plane`, `rate-limiting`, `jwt-validation`, `tls-termination`, `request-routing`, `circuit-breaker`, `cors-policy`, `observability-bridge` |
+| **Edge Proxy** | Gateway | Source-available (public repo) | `gateway-core`, `route-registry`, `request-routing`, `tls-termination`, `circuit-breaker`, `backend-health`, `observability-bridge`, edge-failover cap (SKU-specific) |
+| **Bot Blocker** | Gateway | **Closed-source** (private repo) — anti-abuse security exception | `gateway-core`, `tls-termination`, `policy-chain`, `bot-fingerprinting` (enterprise-private), `waf-rules`, `rate-limiting`, `observability-bridge` |
+| **IDP** | Service Boundary | Source-available (public repo) | `service-boundary-core`, `multi-tenancy`, `audit-trail`, `rbac-policy`, `attachment-storage`, `rest-emission`, `openapi-emission`, `workflow-engine`, `document-ingestion`, `ocr-pipeline`, `document-classifier`, `field-extraction`, `form-recognition`, `ai-llm-abstraction`, `ai-prompt-templating`, `observability-bridge` |
+| **PIM** | Service Boundary | Source-available (public repo) | `service-boundary-core`, `multi-tenancy`, `audit-trail`, `rbac-policy`, `i18n`, `attachment-storage`, `asset-management`, `search-index`, `entity-versioning`, `content-versioning`, `product-catalog`, `import-export`, `rest-emission`, `graphql-emission`, `openapi-emission`, `observability-bridge` |
+| **OMS** | Service Boundary | Source-available (public repo) | `service-boundary-core`, `multi-tenancy`, `audit-trail`, `rbac-policy`, `workflow-engine`, `notification-dispatch`, `circuit-breaker`, `product-catalog`, `pricing-engine`, `inventory-tracking`, `order-lifecycle`, `payment-gateway`, `contact-graph`, `rest-emission`, `openapi-emission`, `observability-bridge`. L4 Flow saga engine (ADR-013) consumed via kernel SPI. |
+| **Headless CMS** | Service Boundary | Source-available (public repo) | `service-boundary-core`, `multi-tenancy`, `audit-trail`, `rbac-policy`, `i18n`, `attachment-storage`, `asset-management`, `search-index`, `content-types`, `content-versioning`, `rest-emission`, `graphql-emission`, `openapi-emission`, `observability-bridge` |
 
 The **Context-Centric CRM data model** is `exeris-caps-contact-graph` from §3.2 layer 5. It is a single domain-primitive cap that Service Boundary SKUs may compose; it is not itself a standalone SKU until the 2029 product-form release planned in the whitepaper §7. When that SKU ships, its manifest will combine `contact-graph` with the SB platform layer and any CRM-specific caps that emerge.
 
@@ -421,17 +423,17 @@ Native-bypass transport (QUIC/HTTP/3, `io_uring`, IOCP) is **not** a Tier 2 cap 
 
 ### 6.3 Tier 3 — Platform SKUs
 
-Every Platform SKU is a **commercial-licensed composition** of underlying caps. The composition manifest itself (the cap list, version pins, signature) ships under the Exeris Commercial License regardless of the licensing of individual underlying caps. A subscriber receives the right to run the named composition; a customer who pays the Code Detachment Fee (whitepaper §5.4) receives transferable ownership of the manifest plus the underlying commercial-licensed caps under a perpetual-use grant for the detached version.
+Every Platform SKU is a **commercial-licensed composition** of underlying caps. The composition manifest itself (the cap list, version pins, signature) ships under the Exeris Commercial License regardless of the licensing of individual underlying caps. SKU repositories are source-available public repositories by default per ADR-023 §"SKU Repository Source-Visibility Policy" — closing the audit gap at the SKU layer alongside the cap layer — with the Bot Blocker SKU as the single principled closed-source exception on anti-abuse-security grounds. A subscriber receives the right to run the named composition; a customer who pays the Code Detachment Fee (whitepaper §5.4) receives transferable ownership scoped to the SKU's source-visibility class.
 
-| SKU repository | License | Note |
-|---|---|---|
-| `exeris-sku-api-gateway` | commercial | Composition includes commercial caps; Enterprise Tier 1 driver swap (`exeris-kernel-enterprise`) available — same manifest, different substrate driver |
-| `exeris-sku-edge-proxy` | commercial | Same Tier 1 substrate driver swap pattern; Enterprise driver recommended for edge deployments |
-| `exeris-sku-bot-blocker` | commercial | JA3/JA4 fingerprinting cap is enterprise-private — Bot Blocker SKU requires the corresponding subscription tier |
-| `exeris-sku-idp` | commercial | Includes AI Abstraction caps (all commercial) |
-| `exeris-sku-pim` | commercial | |
-| `exeris-sku-oms` | commercial | Composes the L4 Flow saga engine via kernel SPI |
-| `exeris-sku-headless-cms` | commercial | |
+| SKU repository | License | Source visibility | Note |
+|---|---|---|---|
+| `exeris-sku-api-gateway` | commercial | Source-available (public) | Composition includes commercial caps; Enterprise Tier 1 driver swap (`exeris-kernel-enterprise`) available — same manifest, different substrate driver |
+| `exeris-sku-edge-proxy` | commercial | Source-available (public) | Same Tier 1 substrate driver swap pattern; Enterprise driver recommended for edge deployments |
+| `exeris-sku-bot-blocker` | commercial | **Closed-source** (private) | JA3/JA4 fingerprinting cap is `enterprise-private`; the SKU repository is itself closed-source on anti-abuse-security principle per ADR-023 amendment. Detachment scope per whitepaper §5.4 differs: perpetual binary-use licence + manifest, not source. |
+| `exeris-sku-idp` | commercial | Source-available (public) | Includes AI Abstraction caps (all commercial) |
+| `exeris-sku-pim` | commercial | Source-available (public) | |
+| `exeris-sku-oms` | commercial | Source-available (public) | Composes the L4 Flow saga engine via kernel SPI |
+| `exeris-sku-headless-cms` | commercial | Source-available (public) | |
 
 ### 6.4 Family products (out of open-core taxonomy)
 
