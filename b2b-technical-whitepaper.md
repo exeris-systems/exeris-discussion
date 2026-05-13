@@ -122,16 +122,18 @@ All cap repositories are currently in **specified** status. Implementation caden
 
 First-party Platform SKUs are pre-wired capability compositions sold or licensed by Exeris Systems. Each SKU has its own repository (`exeris-sku-*`), its own commercial positioning, and its own Enterprise-tier engine swap path. The SKU layer is where the platform's structural efficiency becomes a buyer-facing product.
 
-| SKU | Family | Target customer | Commercial positioning |
-|---|---|---|---|
-| **API Gateway** | Gateway | API-first B2B platforms with sustained >50k RPS per node | Envoy/Kong density and policy parity at sub-Envoy memory and CPU footprint |
-| **Edge Proxy** | Gateway | Multi-region SaaS, CDN-adjacent deployments | Sub-millisecond P99 failover at the edge; in-process telemetry without sidecars |
-| **Bot Blocker** | Gateway | E-commerce, fintech, ticketing | JA3/JA4 TLS fingerprinting at the kernel layer — fingerprint extraction happens before the request reaches policy chain |
-| **IDP** | Service Boundary | Document-heavy B2B operations (insurance, logistics, legal) | Page-throughput parity with hyperscaler IDP at fraction of per-page cost; on-prem deployable |
-| **PIM** | Service Boundary | Multi-channel retail, B2B distributors | Headless product information with Spring-native API surface and graph-native attribute relations |
-| **OMS** | Service Boundary | Marketplaces, multi-vendor logistics | Distributed saga orchestration (ADR-013) as the order state model |
-| **Headless CMS** | Service Boundary | Editorial-driven B2B and B2C sites | Content as `@ExerisDomain` types, generated REST + GraphQL surfaces |
-| **Context-Centric CRM** | Cross-cutting data model | Service Boundary SKU composers | Anti-account-centric data primitive — relationship graph as first-class, not as a CRM appendage |
+| SKU | Family | Source visibility | Target customer | Commercial positioning |
+|---|---|---|---|---|
+| **API Gateway** | Gateway | Source-available (Exeris Commercial License) | API-first B2B platforms with sustained >50k RPS per node | Envoy/Kong density and policy parity at sub-Envoy memory and CPU footprint |
+| **Edge Proxy** | Gateway | Source-available (Exeris Commercial License) | Multi-region SaaS, CDN-adjacent deployments | Sub-millisecond P99 failover at the edge; in-process telemetry without sidecars |
+| **Bot Blocker** | Gateway | **Closed-source** (Exeris Commercial License) — anti-abuse security exception per ADR-023 | E-commerce, fintech, ticketing | JA3/JA4 TLS fingerprinting at the kernel layer — fingerprint extraction happens before the request reaches policy chain |
+| **IDP** | Service Boundary | Source-available (Exeris Commercial License) | Document-heavy B2B operations (insurance, logistics, legal) | Page-throughput parity with hyperscaler IDP at fraction of per-page cost; on-prem deployable |
+| **PIM** | Service Boundary | Source-available (Exeris Commercial License) | Multi-channel retail, B2B distributors | Headless product information with kernel-direct API surface and graph-native attribute relations |
+| **OMS** | Service Boundary | Source-available (Exeris Commercial License) | Marketplaces, multi-vendor logistics | Distributed saga orchestration (ADR-013) as the order state model |
+| **Headless CMS** | Service Boundary | Source-available (Exeris Commercial License) | Editorial-driven B2B and B2C sites | Content as `@ExerisDomain` types, generated REST + GraphQL surfaces |
+| **Context-Centric CRM** | Cross-cutting data model (`exeris-caps-contact-graph` cap, not a standalone SKU) | Source-available — inherits cap licensing (`commercial`) per ADR-023 | Service Boundary SKU composers | Anti-account-centric data primitive — relationship graph as first-class, not as a CRM appendage |
+
+**Source-visibility policy.** First-party Platform SKU repositories default to source-available public repositories under the Exeris Commercial License (the same source-available / subscription-required model that governs `commercial`-licensed caps per ADR-023). Source-availability operationalises the Glass Box thesis at the SKU layer — customers can audit the complete stack from kernel through cap to SKU before subscribing, and the matched-contract benchmark methodology becomes testable at the customer's desk rather than asserted in a vendor whitepaper. The Bot Blocker SKU is the single principled exception: published anti-abuse detection logic materially helps adversaries circumvent the protection, so the SKU is closed-source on the same principle that Cloudflare, Akamai Bot Manager, and every serious bot-protection vendor follows for their detection internals. The exception is named in the Bot Blocker repository's README and in customer-facing material; it does not generalise to other SKUs. See ADR-023 §"SKU Repository Source-Visibility Policy" for the full decision.
 
 **Gateway family** (API Gateway, Edge Proxy, Bot Blocker) is kernel-level — no Spring dependency in the data plane, consistent with ADR-021 (gateway-class workloads out of `exeris-spring-runtime` scope). The **Enterprise engine swap is a Tier 1 substrate change**: the customer substitutes the `exeris-kernel-enterprise` driver (`io_uring` / IOCP transport, `EnterpriseQuicTlsEngine`, HTTP/3 codec, NUMA-aware slab pools) for the standard `exeris-kernel` Community driver (custom NIO H1/H2 + portable Off-Heap TLS over TCP). The Tier 2 cap composition manifest is byte-identical across both deployments because cap-layer code references kernel SPIs only — never `io_uring`, QUIC, NIO, or any concrete driver. This is what makes "Enterprise license unlocks engine swap" a structural fact rather than a marketing claim: the swap happens at the Maven coordinate / `ServiceLoader` level in the substrate, with zero changes upstream.
 
@@ -223,7 +225,14 @@ Customer subscribes to one or more Platform SKUs from the §3.3 inventory. The c
 
 Customers can elect to upgrade to a **Platform tier** subscription at any time, at which point they gain Studio access to author and modify cap compositions directly. This is the migration path from "consume a SKU" to "compose your own SKU."
 
-The **Code Detachment Fee** from the Corelio framing is reframed at this layer as the one-time license that transfers cap composition ownership permanently to the customer's repository fork. For SMB-tier SKUs the fee is in the low five-figure euros, scaling with deployment size and SLA tier. This is the structural realization of the IP sovereignty promise from §6 — paying the fee unlocks not a runtime privilege but a property right.
+The **Code Detachment Fee** from the Corelio framing is reframed at this layer as the one-time license that transfers SKU ownership permanently to the customer's repository fork. For SMB-tier SKUs the fee is in the low five-figure euros, scaling with deployment size and SLA tier. This is the structural realization of the IP sovereignty promise from §6 — paying the fee unlocks not a runtime privilege but a property right.
+
+**What detachment includes per SKU source-visibility (per ADR-023 §"SKU Repository Source-Visibility Policy"):**
+
+- **Source-available SKUs** (API Gateway, Edge Proxy, IDP, PIM, OMS, Headless CMS) — detachment transfers ownership of the SKU source repository, the cap composition manifest, the SKU-specific policy capabilities the customer is licensed for, and the build-time codegen artefacts (`exeris-tooling` outputs) required to operate the SKU independently. The customer takes a perpetual-use grant for the underlying `commercial`-licensed caps for the detached version. After detachment, the customer can operate, modify, and fork the SKU under the terms of the perpetual-use grant; they cannot redistribute under different licence terms.
+- **Closed-source Bot Blocker SKU** — detachment transfers a perpetual binary-use licence for the deployed version plus the cap composition manifest, but **not** the closed security logic (the JA3/JA4 detection internals, the bot-fingerprinting cap, anti-abuse heuristics). This is honest, not a hidden carve-out: the security logic loses commercial value the moment it is publicly readable, so source detachment would devalue what the customer is paying to detach. The detached customer receives a binary that continues to operate at the deployed version indefinitely; if they want continued evolution of the security stack, they retain a Bot Blocker subscription separately.
+
+The detachment scope is disclosed at sale time and named in the Code Detachment agreement, so the customer's expectations match the contractual reality. The bound on detachment scope is part of how the platform stays commercially sustainable while still delivering on the IP-sovereignty promise — sophisticated buyers treat this structure as proof the platform is serious, not as a concession.
 
 #### 5.5 Family Product Hosting
 
