@@ -115,7 +115,7 @@ C4Component
     Component(spi, "SPI (The Constitution)", "Records + Interfaces", "Immutable contracts, implementation-blind, Spring-free (ADR-006).")
     Component(core, "Core (The Brain)", "Java 26 / ScopedValue / StructuredTaskScope", "Bootstrap DAG, orchestration, KernelProviders.")
 
-    Component_Boundary(subsystems, "Subsystem Layers — L0 mandatory, L1–L2 standard, L3–L4 optional") {
+    Container_Boundary(subsystems, "Subsystem Layers — L0 mandatory, L1–L2 standard, L3–L4 optional") {
         Component(l0, "L0 — Foundation", "Memory (LoanedBuffer, Arenas), JFR Telemetry", "Mandatory. Config is resolved by KernelBootstrap via ServiceLoader before the orchestrator runs and is not a Subsystem; Exceptions is not a Subsystem layer.")
         Component(l1, "L1 — Data & Integrity", "Security (ScopedValue, RLS), Persistence, Crypto/TLS (OffHeapTlsEngine)", "Standard.")
         Component(l2, "L2 — Data Synthesis", "Transport (I/O, scheduler), Graph (PGQ DSL), HTTP Codec (ADR-009)", "Standard.")
@@ -123,7 +123,7 @@ C4Component
         Component(l4, "L4 — Orchestration", "Flow (Sagas, off-heap state per ADR-013)", "Optional.")
     }
 
-    Component_Boundary(drivers, "Execution Drivers") {
+    Container_Boundary(drivers, "Execution Drivers") {
         Component(community, "Community Driver", "NIO.2 / TCP / JDBC / Portable Off-Heap TLS (OpenSSL 3.x via Panama FFM)", "Standard high-performance Java implementation. Ships OffHeapTlsEngine from Core.")
         Component(enterprise, "Enterprise Driver", "io_uring / QUIC / EnterpriseQuicTlsEngine (ADR-019)", "Native-bypass, NUMA-aware via libnuma mbind() (see exeris-kernel-enterprise/docs/subsystems/memory.md), high-density.")
     }
