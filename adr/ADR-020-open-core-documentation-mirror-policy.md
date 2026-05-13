@@ -16,7 +16,7 @@
 
 Exeris is distributed as **open-core**: a set of public repositories that any consumer can clone, build, and deploy, plus a set of private enterprise repositories that ship the high-density runtime extensions.
 
-**Public open-core repos** (consumers see these): `exeris-kernel`, `exeris-kernel-community`, `exeris-sdk`, `exeris-spring-runtime`, `exeris-tooling`, `exeris-platform`, `exeris-benchmarks`, `exeris-telemetry-spec`, `exeris-docs`.
+**Public open-core repos** (consumers see these): `exeris-kernel` (umbrella for SPI, Core, Community drivers, TCK — Community lives as Maven modules `exeris-kernel-community`, `exeris-kernel-community-kafka`, `exeris-kernel-community-testkit` inside this repo, not as a separate sibling repo), `exeris-sdk`, `exeris-spring-runtime`, `exeris-tooling`, `exeris-platform`, `exeris-benchmarks`, `exeris-telemetry-spec`, `exeris-docs`.
 
 **Private enterprise repos** (commercial overlay): `exeris-kernel-enterprise`, `exeris-benchmarks-enterprise`, `exeris-enterprise-observability`.
 
